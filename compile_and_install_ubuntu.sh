@@ -9,3 +9,4 @@ if [ ! -f "$INST_FILE" ]
 then
   $INST_CMD
 fi
+rm dictcc

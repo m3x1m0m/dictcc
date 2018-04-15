@@ -85,7 +85,7 @@ namespace dictcc
     return d_translations;
   }
 
-  void dict::reset_search(void)
+  search_ptr_t dict::reset_search(void)
   {
       // Initialize the word lists so they are not empty.
       str_list_t l0(1, ""), l1(1, "");
@@ -97,6 +97,12 @@ namespace dictcc
         // Apparently, the pointer has not been initialized yet.
         d_translations = std::make_shared<search_t>(pair);
       }
+      return d_translations;
+  }
+
+  search_ptr_t dict::get_translations(void)
+  {
+    return d_translations;
   }
 
   std::string dict::langs2str(const lang_t& lt)

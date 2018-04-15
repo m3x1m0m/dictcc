@@ -58,12 +58,15 @@ namespace dictcc
       virtual ~dict(){}
 
     public:
-      /*! \brief Perform a search and create a smart pointer object.
+      /*! \brief Perform a search and return results.
        */
       search_ptr_t search(std::string word);
       /*! \brief Make sure there are two empty word lists.
        */
-      void reset_search(void);
+      search_ptr_t reset_search(void);
+      /*! Simply returns a pointer to the translations, no matter if the smart pointer actually holds any data.
+       */
+      search_ptr_t get_translations(void);
       static std::string langs2str(const lang_t& lt);
       static lang_t str2langs(const std::string& str);
       /*! \brief Help function: Get the size of a string in chars containing multibyte characters e.g. ü.
