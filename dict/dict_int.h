@@ -36,10 +36,10 @@ namespace dictcc
     private:
       /*! \brief Translations found by the search for a string.
        */
-      search_ptr_t d_translations;
+      search_ptr_t d_translations = nullptr;
       /*! \brief Additional information e.g. different forms of a verb.
        */
-      search_ptr_t d_additional;
+      search_ptr_t d_additional = nullptr;
       curlpp::Easy d_request;
       curlpp::Cleanup d_cleaner;
       lang_t d_langs;
@@ -52,13 +52,18 @@ namespace dictcc
       std::string d_suburl;
 
     protected:
-      dict(){setlocale(LC_ALL, "");}
+      dict();
 
     public:
       virtual ~dict(){}
 
     public:
+      /*! \brief Perform a search and create a smart pointer object.
+       */
       search_ptr_t search(std::string word);
+      /*! \brief Make sure there are two empty word lists.
+       */
+      void reset_search(void);
       static std::string langs2str(const lang_t& lt);
       static lang_t str2langs(const std::string& str);
       /*! \brief Help function: Get the size of a string in chars containing multibyte characters e.g. ü.

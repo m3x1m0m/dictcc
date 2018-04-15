@@ -2,6 +2,12 @@
 
 namespace dictcc
 {
+
+  dict::dict()
+  {
+    setlocale(LC_ALL, "");
+  }
+
   const std::string dict::URL_HTTPS = "https://";
   const std::string dict::URL_REST = ".dict.cc/?s=";
   const std::string dict::QUERYA = "c1Arr = new Array";
@@ -68,7 +74,7 @@ namespace dictcc
       l0.resize(min);
       l1.resize(min);
     }
-    // Make pair and return shared pointer to it.
+    // Make pair and make shared ptr if necessary.
     auto pair = std::make_pair(l0, l1);
     if (d_translations == nullptr) {
       d_translations = std::make_shared<search_t>(pair);
@@ -77,6 +83,20 @@ namespace dictcc
     }
     // Return a shared pointer to the pair of lists
     return d_translations;
+  }
+
+  void dict::reset_search(void)
+  {
+      // Initialize the word lists so they are not empty.
+      str_list_t l0(1, ""), l1(1, "");
+      auto pair = std::make_pair(l0, l1);
+      if (d_translations != nullptr)
+      {
+        *d_translations = pair;
+      } else {
+        // Apparently, the pointer has not been initialized yet.
+        d_translations = std::make_shared<search_t>(pair);
+      }
   }
 
   std::string dict::langs2str(const lang_t& lt)
