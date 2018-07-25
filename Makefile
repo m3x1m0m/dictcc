@@ -3,6 +3,7 @@ CFLAGS=-Wall -c -g
 DICT_DIR=./dict
 LFLAGS=-lcurl -lcurlpp -g -Wall
 INST_FILE=/usr/local/bin/dictcc
+TARGET=dictcc
 
 dict : deen.o desv.o dict_imp.o dictcc.o make_lib
 deen.o :
@@ -14,8 +15,8 @@ dict_imp.o :
 dictcc.o :
 	$(CC) $(CFLAGS) dictcc.cc
 make_lib :
-	$(CC) dictcc.o deen.o desv.o dict_imp.o -o dictcc $(LFLAGS)
+	$(CC) dictcc.o deen.o desv.o dict_imp.o -o $(TARGET) $(LFLAGS)
 install:
-	sudo ln -s $(PWD)/dictcc $(INST_FILE)
+	sudo ln -s $(PWD)/$(TARGET) $(INST_FILE)
 clean :
-	rm *.o
+	rm *.o rm $(TARGET)
