@@ -108,7 +108,7 @@ namespace dictcc
   std::string dict::langs2str(const lang_t& lt)
   {
     // TODO: Add new languages here.
-    std::vector<std::string> str = {"DESV", "DEEN"};
+    std::vector<std::string> str = {"DESV", "DEEN", "DENL"};
     if (lt >= str.size()) {
       throw(dict_lang_error(__FILE__, __LINE__));
     }
@@ -121,6 +121,8 @@ namespace dictcc
       return DESV;
     } else if ( str == "DEEN") {
       return DEEN;
+    } else if ( str == "DENL") {
+      return DENL;
     } else {
       throw(dict_lang_error(__FILE__, __LINE__));
     }

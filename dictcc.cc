@@ -11,7 +11,8 @@ int main(int argc, char **argv)
   // TODO: Add new languages here.
   std::ostringstream langs;
   langs << "      DESV"                       << std::endl
-        << "      DEEN"                       << std::endl;
+        << "      DEEN"                       << std::endl
+        << "      DENL"                       << std::endl;
   // Help stringstream
   std::ostringstream help;
   help  << "dictcc [OPTION] [ARGUMENT]"       << std::endl

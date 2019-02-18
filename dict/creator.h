@@ -5,6 +5,7 @@
 #include "dict_int.h"
 #include "desv.h"
 #include "deen.h"
+#include "denl.h"
 #include "types.h"
 #include "exceptions.h"
 
@@ -26,6 +27,8 @@ namespace dictcc
             return std::make_shared<desv>();
           case DEEN:
             return std::make_shared<deen>();
+          case DENL:
+            return std::make_shared<denl>();
         default:
           throw(dict_lang_error(__FILE__, __LINE__));
       }

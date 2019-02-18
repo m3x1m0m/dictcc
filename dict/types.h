@@ -24,7 +24,8 @@ namespace dictcc
   typedef enum
   {
     DESV,
-    DEEN
+    DEEN,
+    DENL
   } lang_t;
 } // namespace dictcc
 
